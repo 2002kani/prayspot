@@ -23,6 +23,7 @@ All the best practises, naming conventions, information and much more. This is t
 ## Branch naming convention
 
 initials/feature_name
+
 Example: kk/adding_expomaps
 
 ## Feature Workflow
