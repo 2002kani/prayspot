@@ -20,6 +20,11 @@ All the best practises, naming conventions, information and much more. This is t
   - cd prayspot-frontend
   - code .
 
+## Branch naming convention
+
+initials/feature_name
+Example: kk/adding_expomaps
+
 ## Feature Workflow
 
 If you’re working on a feature, fixing a bug, or making any changes in the app, **never push your code directly to main**. We use branches to manage our workflow. Here’s an example of how it should be done:
@@ -36,3 +41,11 @@ Now you can make some changes in the code without directly affecting the main br
 7. git push origin BRANCH_NAME
 
 Now you can checkout back to main branch if you want.
+
+## Pull request
+
+After pushing your changes, open the GitHub repository. You’ll find your created pull request there. Fill in the details, submit it, and wait for the CTO to review and approve your PR.
+
+Naming convention: type(area): EXAMPLE_MESSAGE
+
+Examples: bal
