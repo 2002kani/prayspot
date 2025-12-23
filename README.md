@@ -5,12 +5,7 @@ All the best practises, naming conventions, information and much more. This is t
 ## How to start?
 
 **Prerequisites**
-- node
-- git
-- java
-- random code editor
-- expo go (for mobile view)
-- postgresql (if working with db)
+- node, git, java, expo go
 
 **What to do**
 1. Clone this repo
