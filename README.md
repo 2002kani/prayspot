@@ -14,6 +14,7 @@ All the best practises, naming conventions, information and much more. This is t
 
 **What to do**
 1. Clone this repo
+   
 2. Open file
   - cd prayspot
   - cd prayspot-frontend
