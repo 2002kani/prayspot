@@ -63,7 +63,3 @@ docs → documentations
 
 test → test implementation
 
-**area examples:**
-
-frontend
-backend
