@@ -46,6 +46,6 @@ Now you can checkout back to main branch if you want.
 
 After pushing your changes, open the GitHub repository. You’ll find your created pull request there. Fill in the details, submit it, and wait for the CTO to review and approve your PR.
 
-Naming convention: type(area): EXAMPLE_MESSAGE
+Naming convention: type(area): example message
 
 Examples: bal
