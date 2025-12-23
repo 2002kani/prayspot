@@ -20,8 +20,6 @@ All the best practises, naming conventions, information and much more. This is t
   - cd prayspot-frontend
   - code .
 
-3. npm i
-
 ## Feature Workflow
 
 If you’re working on a feature, fixing a bug, or making any changes in the app, **never push your code directly to main**. We use branches to manage our workflow. Here’s an example of how it should be done:
