@@ -49,6 +49,7 @@ After pushing your changes, open the GitHub repository. You’ll find your creat
 
 Naming convention: type(area): example message
 
+
 **type examples:** 
 
 feat → new feature
