@@ -48,4 +48,21 @@ After pushing your changes, open the GitHub repository. You’ll find your creat
 
 Naming convention: type(area): example message
 
-Examples: bal
+**type examples:** 
+
+feat → new feature
+
+fix → Bugfix
+
+chore → regular updates, no direct code impact
+
+refactor → change of code structuring
+
+docs → documentations
+
+test → test implementation
+
+**area examples:**
+
+frontend
+backend
