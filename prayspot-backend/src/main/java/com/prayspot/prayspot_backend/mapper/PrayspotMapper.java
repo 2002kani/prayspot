@@ -43,7 +43,7 @@ public class PrayspotMapper {
     public List<PrayspotResponse> mapToPrayspotResponseList(List<Prayspot> spot) {
         if (spot == null) return null;
 
-        return spot.stream().map(s-> PrayspotResponse.builder()
+        return spot.stream().map(s -> PrayspotResponse.builder()
                 .id(s.getId())
                 .name(s.getName())
                 .description(s.getDescription())
