@@ -20,8 +20,8 @@ public class PrayspotServiceImpl implements IPrayspotService {
 
     @Override
     public List<PrayspotResponse> getAllPrayspots() {
-        List<Prayspot> prayspots = prayspotRepository.findByIsDeletedFalse();
-        return prayspotMapper.mapToPrayspotResponseList(prayspots);
+        List<Prayspot> spots = prayspotRepository.findByIsDeletedFalse();
+        return prayspotMapper.mapToPrayspotResponseList(spots);
     }
 
     @Override
