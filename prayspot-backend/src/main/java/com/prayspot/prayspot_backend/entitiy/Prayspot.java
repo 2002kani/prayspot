@@ -3,15 +3,20 @@ package com.prayspot.prayspot_backend.entitiy;
 import com.prayspot.prayspot_backend.enums.SpotType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "prayspots")
 public class Prayspot {
 
     @Id

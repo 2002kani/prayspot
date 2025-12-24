@@ -1,6 +1,6 @@
 package com.prayspot.prayspot_backend.controller;
 
-import com.prayspot.prayspot_backend.dto.CreatePrayspotResponse;
+import com.prayspot.prayspot_backend.dto.PrayspotResponse;
 import com.prayspot.prayspot_backend.service.IPrayspotService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +15,12 @@ import java.util.List;
 @RequestMapping("api/admin")
 public class AdminController {
 
+    // TODO: For future use would be better to create seperate Service for Admin
     private final IPrayspotService prayspotService;
 
     @GetMapping
-    public ResponseEntity<List<CreatePrayspotResponse>> getAllPrayspots() {
-        List<CreatePrayspotResponse> prayspots = prayspotService.getAllPrayspots();
+    public ResponseEntity<List<PrayspotResponse>> getAllPrayspots() {
+        List<PrayspotResponse> prayspots = prayspotService.getAllPrayspots();
         return ResponseEntity.ok(prayspots);
     }
 }

@@ -1,10 +1,7 @@
 package com.prayspot.prayspot_backend.dto;
 
 import com.prayspot.prayspot_backend.enums.SpotType;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -12,7 +9,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreatePrayspotResponse {
+public class PrayspotRequest {
     private String name;
     private String description;
     private BigDecimal latitude;
