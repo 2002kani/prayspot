@@ -12,8 +12,7 @@ const UnderConstruction: React.FC<PropsWithChildren> = ({ children }) => {
           Under Construction...
         </h2>
         <p className="text-muted-foreground">
-          {children ||
-            "Diese Funktion ist noch in Arbeit. Schau bald wieder vorbei!"}
+          {children || "Diese Funktion ist noch nicht fertiggestellt."}
         </p>
       </div>
     </div>

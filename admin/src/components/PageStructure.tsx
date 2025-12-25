@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from "react";
 
 const Page: React.FC<PropsWithChildren> = ({ children }) => {
-  return <div className="container md:max-w-screen-md">{children}</div>;
+  return <div className="w-full max-w-screen-xl mx-auto">{children}</div>;
 };
 
 const PageTitle: React.FC<PropsWithChildren> = ({ children }) => {

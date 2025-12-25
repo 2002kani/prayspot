@@ -126,7 +126,7 @@ function AppSidebar() {
               className="text-xs truncate"
               style={{ color: "hsl(var(--muted-foreground) / 0.7)" }}
             >
-              admin@prayspot.app
+              duha@yrm.com
             </p>
           </div>
         </div>
