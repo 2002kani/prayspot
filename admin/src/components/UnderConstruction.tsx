@@ -4,7 +4,7 @@ import { Hammer } from "lucide-react";
 const UnderConstruction: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className="flex items-center justify-center h-full py-20">
-      <div className="bg-card rounded-2xl p-12 text-center max-w-md w-full">
+      <div className="bg-card rounded-2xl text-center max-w-md w-full">
         <div className="flex items-center justify-center mb-6">
           <Hammer className="w-20 h-20 text-accent" />
         </div>

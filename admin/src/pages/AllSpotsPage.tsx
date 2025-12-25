@@ -8,11 +8,14 @@ import {
 import PrayspotTable from "@/components/PrayspotTable";
 import { usePrayspots } from "@/hooks/useSpots";
 import { columns } from "@/components/Columns";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 const TITLE_OF_PAGE = "Gebetsorte";
 
 function AllSpotsPage() {
   const { data, isLoading } = usePrayspots();
+
+  console.log(columns);
 
   return (
     <>
@@ -24,9 +27,7 @@ function AllSpotsPage() {
 
         <PageList>
           {isLoading ? (
-            <div className="flex items-center justify-center h-64">
-              <div className="w-16 h-16 border-4 border-gray-300 border-t-green-600 rounded-full animate-spin"></div>
-            </div>
+            <LoadingSpinner />
           ) : (
             <PrayspotTable columns={columns} data={data} />
           )}

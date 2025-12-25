@@ -7,4 +7,5 @@ export interface Prayspot {
   longitude: number;
   address: string;
   type: SpotType;
+  isVerified: boolean;
 }
