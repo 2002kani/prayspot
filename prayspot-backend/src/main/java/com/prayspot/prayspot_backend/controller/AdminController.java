@@ -24,9 +24,16 @@ public class AdminController {
         return ResponseEntity.ok(prayspots);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<PrayspotResponse> createPrayspot(@RequestBody PrayspotRequest request) {
         PrayspotResponse savedSpot = prayspotService.createPrayspot(request);
         return new ResponseEntity<>(savedSpot, HttpStatus.CREATED);
     }
+
+    @PatchMapping("/spot/{id}/status")
+    public ResponseEntity<PrayspotResponse> updatePrayspotStatus(@PathVariable Long id, @RequestBody PrayspotRequest request) {
+        PrayspotResponse updatedSpot = prayspotService.updatePrayspotStatus(id, request.getIsVerified());
+        return ResponseEntity.ok(updatedSpot);
+    }
+
 }

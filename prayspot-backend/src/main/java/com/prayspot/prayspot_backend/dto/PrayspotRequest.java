@@ -10,10 +10,12 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PrayspotRequest {
+    private Long id;
     private String name;
     private String description;
     private BigDecimal latitude;
     private BigDecimal longitude;
     private String address;
     private SpotType type;
+    private Boolean isVerified;
 }

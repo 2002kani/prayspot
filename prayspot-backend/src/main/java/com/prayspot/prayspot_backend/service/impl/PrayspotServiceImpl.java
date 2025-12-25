@@ -3,11 +3,15 @@ package com.prayspot.prayspot_backend.service.impl;
 import com.prayspot.prayspot_backend.dto.PrayspotRequest;
 import com.prayspot.prayspot_backend.dto.PrayspotResponse;
 import com.prayspot.prayspot_backend.entitiy.Prayspot;
+import com.prayspot.prayspot_backend.exception.SpotNotFoundException;
 import com.prayspot.prayspot_backend.mapper.PrayspotMapper;
 import com.prayspot.prayspot_backend.repository.PrayspotRepository;
 import com.prayspot.prayspot_backend.service.IPrayspotService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -29,5 +33,16 @@ public class PrayspotServiceImpl implements IPrayspotService {
         Prayspot prayspot = prayspotMapper.mapToEntity(request);
         Prayspot savedSpot = prayspotRepository.save(prayspot);
         return prayspotMapper.mapToPrayspotResponse(savedSpot);
+    }
+
+    @Override
+    public PrayspotResponse updatePrayspotStatus(Long id, boolean isVerified) {
+        Prayspot spot = prayspotRepository.findById(id)
+                .orElseThrow(() -> new SpotNotFoundException("Prayspot with id: " + id + " not found"));
+
+        spot.setIsVerified(isVerified);
+        prayspotRepository.save(spot);
+        
+        return prayspotMapper.mapToPrayspotResponse(spot);
     }
 }

@@ -20,4 +20,5 @@ public class PrayspotResponse {
     private BigDecimal longitude;
     private String address;
     private SpotType type;
+    private Boolean isVerified;
 }

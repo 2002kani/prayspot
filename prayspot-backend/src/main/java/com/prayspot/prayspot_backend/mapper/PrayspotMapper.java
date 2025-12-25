@@ -37,7 +37,9 @@ public class PrayspotMapper {
                 .latitude(spot.getLatitude())
                 .longitude(spot.getLongitude())
                 .address(spot.getAddress())
-                .type(spot.getType()).build();
+                .type(spot.getType())
+                .isVerified(spot.getIsVerified())
+                .build();
     }
 
     public List<PrayspotResponse> mapToPrayspotResponseList(List<Prayspot> spot) {
@@ -51,6 +53,7 @@ public class PrayspotMapper {
                 .longitude(s.getLongitude())
                 .address(s.getAddress())
                 .type(s.getType())
+                .isVerified(s.getIsVerified())
                 .build()).collect(Collectors.toList());
     }
 }
