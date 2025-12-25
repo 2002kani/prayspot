@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import {
   Sidebar,
@@ -12,20 +12,17 @@ import {
   SidebarMenuItem,
   SidebarSeparator,
 } from "./ui/sidebar";
-import { logo } from "../assets";
 import { items } from "@/constants/SidebarItems";
+import { MapPin } from "lucide-react";
 
 function AppSidebar() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <Sidebar
       collapsible="none"
-      className="border-r h-screen w-75"
-      style={{
-        borderColor: "hsl(var(--border) / 0.4)",
-        backgroundColor: "hsl(var(--background))",
-      }}
+      className="bg-white border-r border-gray-200 h-screen w-[18%]"
     >
       <SidebarHeader className="px-6 py-5">
         <div className="flex items-center gap-3">
@@ -36,13 +33,7 @@ function AppSidebar() {
                 "linear-gradient(to bottom right, hsl(var(--primary)), hsl(var(--primary) / 0.8))",
             }}
           >
-            <img
-              src={logo}
-              alt="Logo"
-              width={36}
-              height={36}
-              className="rounded-md"
-            />
+            <MapPin className="w-5 h-5 text-white" />
           </div>
           <div>
             <h1
@@ -61,42 +52,52 @@ function AppSidebar() {
         </div>
       </SidebarHeader>
 
-      <SidebarSeparator className="mx-4" />
+      <SidebarSeparator className="mx-0 h-px bg-gray-200" />
 
       <SidebarContent className="px-3 py-2">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu className="space-y-1">
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title} className="cursor-pointer">
-                  <SidebarMenuButton
-                    asChild
-                    className="active:scale-[0.98] transition-all"
-                  >
-                    <div
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg group hover:bg-[hsl(var(--accent)/0.5)]"
-                      onClick={() => navigate(item.url)}
-                    >
-                      <item.icon
-                        className="w-5 h-5 transition-colors"
-                        style={{ color: "hsl(var(--muted-foreground))" }}
-                      />
-                      <span
-                        className="text-sm font-medium group-hover:text-[hsl(var(--foreground))]"
-                        style={{ color: "hsl(var(--foreground) / 0.9)" }}
+              {items.map((item) => {
+                const active = location.pathname === item.url;
+
+                return (
+                  <SidebarMenuItem key={item.title} className="cursor-pointer">
+                    <SidebarMenuButton asChild>
+                      <div
+                        onClick={() => navigate(item.url)}
+                        className={`flex items-center gap-3 px-3 py-5 rounded-lg group transition-colors
+                    ${
+                      active
+                        ? "bg-[hsl(var(--accent)/0.9)]"
+                        : "hover:bg-[hsl(var(--accent)/0.9)]"
+                    }`}
                       >
-                        {item.title}
-                      </span>
-                    </div>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+                        <item.icon
+                          className="w-5 h-5 transition-colors"
+                          style={{
+                            color: "hsl(var(--muted-foreground))",
+                          }}
+                        />
+                        <span
+                          className="text-base font-normal"
+                          style={{
+                            color: "hsl(var(--foreground) / 0.9)",
+                          }}
+                        >
+                          {item.title}
+                        </span>
+                      </div>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarSeparator className="mx-4" />
+      <SidebarSeparator className="mx-0 h-px bg-gray-200" />
 
       <SidebarFooter className="p-3">
         <div className="flex items-center gap-3 px-3 py-2.5 cursor-pointer rounded-lg transition-all group hover:bg-[hsl(var(--accent)/0.5)]">

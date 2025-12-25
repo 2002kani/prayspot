@@ -12,9 +12,9 @@ export const items = [
     url: "/all-spots",
   },
   {
-    title: "Neue erstellen",
+    title: "Neu erstellen",
     icon: Plus,
-    url: "/create-new",
+    url: "",
   },
   {
     title: "Einstellungen",
