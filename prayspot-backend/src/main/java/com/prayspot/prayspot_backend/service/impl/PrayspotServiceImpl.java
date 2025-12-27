@@ -24,7 +24,7 @@ public class PrayspotServiceImpl implements IPrayspotService {
 
     @Override
     public List<PrayspotResponse> getAllPrayspots() {
-        List<Prayspot> spots = prayspotRepository.findByIsDeletedFalse();
+        List<Prayspot> spots = prayspotRepository.findByIsDeletedFalseOrderByCreatedAtDesc();
         return prayspotMapper.mapToPrayspotResponseList(spots);
     }
 
@@ -42,7 +42,7 @@ public class PrayspotServiceImpl implements IPrayspotService {
 
         spot.setIsVerified(isVerified);
         prayspotRepository.save(spot);
-        
+
         return prayspotMapper.mapToPrayspotResponse(spot);
     }
 }

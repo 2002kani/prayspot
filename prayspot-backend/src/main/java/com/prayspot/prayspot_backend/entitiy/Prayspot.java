@@ -31,7 +31,8 @@ public class Prayspot {
 
     private BigDecimal longitude;
 
-    private String address;
+    @Embedded
+    private Address address;
 
     private SpotType type;
 

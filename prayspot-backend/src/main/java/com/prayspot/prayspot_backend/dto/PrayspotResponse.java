@@ -18,7 +18,7 @@ public class PrayspotResponse {
     private String description;
     private BigDecimal latitude;
     private BigDecimal longitude;
-    private String address;
+    private AddressResponse address;
     private SpotType type;
     private Boolean isVerified;
 }

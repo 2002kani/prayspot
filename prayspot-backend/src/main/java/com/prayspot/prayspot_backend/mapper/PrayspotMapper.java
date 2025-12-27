@@ -3,13 +3,19 @@ package com.prayspot.prayspot_backend.mapper;
 import com.prayspot.prayspot_backend.dto.PrayspotRequest;
 import com.prayspot.prayspot_backend.dto.PrayspotResponse;
 import com.prayspot.prayspot_backend.entitiy.Prayspot;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
+@AllArgsConstructor
 public class PrayspotMapper {
+
+    private final AddressMapper  addressMapper;
+
     public Prayspot mapToEntity(PrayspotRequest request) {
         if (request == null) return null;
 
@@ -18,7 +24,7 @@ public class PrayspotMapper {
         p.setDescription(request.getDescription());
         p.setLatitude(request.getLatitude());
         p.setLongitude(request.getLongitude());
-        p.setAddress(request.getAddress());
+        p.setAddress(addressMapper.mapToAddressEntity(request.getAddress()));
         p.setType(request.getType());
 
         p.setIsVerified(false);
@@ -36,7 +42,7 @@ public class PrayspotMapper {
                 .description(spot.getDescription())
                 .latitude(spot.getLatitude())
                 .longitude(spot.getLongitude())
-                .address(spot.getAddress())
+                .address(addressMapper.mapToAddressResponse(spot.getAddress()))
                 .type(spot.getType())
                 .isVerified(spot.getIsVerified())
                 .build();
@@ -51,7 +57,7 @@ public class PrayspotMapper {
                 .description(s.getDescription())
                 .latitude(s.getLatitude())
                 .longitude(s.getLongitude())
-                .address(s.getAddress())
+                .address(addressMapper.mapToAddressResponse(s.getAddress()))
                 .type(s.getType())
                 .isVerified(s.getIsVerified())
                 .build()).collect(Collectors.toList());

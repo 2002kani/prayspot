@@ -15,7 +15,7 @@ public class PrayspotRequest {
     private String description;
     private BigDecimal latitude;
     private BigDecimal longitude;
-    private String address;
+    private AddressRequest address;
     private SpotType type;
     private Boolean isVerified;
 }
