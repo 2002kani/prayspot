@@ -65,7 +65,7 @@ function AppSidebar() {
                   <SidebarMenuItem key={item.title} className="cursor-pointer">
                     <SidebarMenuButton asChild>
                       <div
-                        onClick={() => navigate(item.url)}
+                        onClick={() => navigate(item.url ? item.url : "")}
                         className={`flex items-center gap-3 px-3 py-5 rounded-lg group transition-colors
                     ${
                       active

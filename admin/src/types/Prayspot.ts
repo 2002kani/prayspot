@@ -1,6 +1,7 @@
 import type { SpotType } from "./SpotType";
 
 export interface Prayspot {
+  id: number;
   name: string;
   description: string;
   latitude: number;

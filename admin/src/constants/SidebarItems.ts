@@ -14,7 +14,6 @@ export const items = [
   {
     title: "Neu erstellen",
     icon: Plus,
-    url: "",
   },
   {
     title: "Einstellungen",

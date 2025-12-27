@@ -4,7 +4,9 @@ import type { ColumnDef } from "@tanstack/react-table";
 import { Check, MapPin, CircleDashed } from "lucide-react";
 import ColumnsDropdown from "./ColumnsDropdown";
 
-export const columns: ColumnDef<Prayspot>[] = [
+export const createColumns = (
+  onToggleStatus: (prayspot: Prayspot) => void
+): ColumnDef<Prayspot>[] => [
   {
     accessorKey: "type",
     header: "Typ",
@@ -12,9 +14,7 @@ export const columns: ColumnDef<Prayspot>[] = [
       const type = row.getValue("type") as string;
       return (
         <div className="flex items-center gap-2">
-          <span
-            className={`text-xs font-normal text-gray-700 bg-[hsl(var(--accent)/0.9)] p-1 px-3 rounded-lg`}
-          >
+          <span className="text-xs font-normal text-gray-700 bg-[hsl(var(--accent)/0.9)] p-1 px-3 rounded-lg">
             {type}
           </span>
         </div>
@@ -65,13 +65,13 @@ export const columns: ColumnDef<Prayspot>[] = [
     header: () => <span className="sr-only">Aktionen</span>,
     cell: ({ row }) => {
       const prayspot = row.original;
-      // TODO: fix that (handle status logic frontend)
       return (
         <ColumnsDropdown
           name={prayspot.name}
           latitude={prayspot.latitude}
           longitude={prayspot.longitude}
           isVerified={prayspot.isVerified}
+          onToggleStatus={() => onToggleStatus(prayspot)}
         />
       );
     },

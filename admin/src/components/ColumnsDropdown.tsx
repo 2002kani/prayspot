@@ -14,15 +14,15 @@ interface IColumnsDropdownProps {
   latitude: number;
   longitude: number;
   isVerified: boolean;
-  onStatusChange: () => void;
+  onToggleStatus: () => void;
 }
 
 function ColumnsDropdown({
   name,
   latitude,
   longitude,
-  onStatusChange,
   isVerified,
+  onToggleStatus,
 }: IColumnsDropdownProps) {
   return (
     <div className="flex justify-end">
@@ -52,7 +52,7 @@ function ColumnsDropdown({
             <span>Name kopieren</span>
           </DropdownMenuItem>
           <DropdownMenuItem
-            onClick={onStatusChange}
+            onClick={onToggleStatus}
             className="flex items-center gap-2 cursor-pointer"
           >
             {isVerified ? (

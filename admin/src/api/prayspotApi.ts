@@ -12,3 +12,22 @@ export const fetchAllPrayspots = async (): Promise<Prayspot[]> => {
 
   return response.json();
 };
+
+export const updatePrayspotStatus = async (
+  id: number,
+  prayspot: Prayspot
+): Promise<Prayspot> => {
+  const response = await fetch(`${ENDPOINT}/spot/${id}/status`, {
+    method: "PATCH",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(prayspot),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to update todo: ${response.statusText}`);
+  }
+
+  return response.json();
+};

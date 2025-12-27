@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   Page,
   PageHeader,
@@ -7,15 +9,34 @@ import {
 } from "@/components/PageStructure";
 import PrayspotTable from "@/components/PrayspotTable";
 import { usePrayspots } from "@/hooks/useSpots";
-import { columns } from "@/components/Columns";
+import { createColumns } from "@/components/Columns";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import type { Prayspot } from "@/types/Prayspot";
+import { updatePrayspotStatus } from "@/api/prayspotApi";
 
 const TITLE_OF_PAGE = "Gebetsorte";
 
 function AllSpotsPage() {
-  const { data, isLoading } = usePrayspots();
+  const { data, isLoading, mutate } = usePrayspots();
+  const [isUpdating, setIsUpdating] = useState(false);
 
-  console.log(columns);
+  const handleToggleStatus = async (prayspot: Prayspot) => {
+    setIsUpdating(true);
+    try {
+      await updatePrayspotStatus(prayspot.id, {
+        ...prayspot,
+        isVerified: !prayspot.isVerified,
+      });
+      mutate();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsUpdating(false);
+    }
+  };
+
+  const columns = createColumns(handleToggleStatus);
+  console.log(data);
 
   return (
     <>
@@ -26,7 +47,7 @@ function AllSpotsPage() {
         </PageHeader>
 
         <PageList>
-          {isLoading ? (
+          {isLoading || isUpdating ? (
             <LoadingSpinner />
           ) : (
             <PrayspotTable columns={columns} data={data} />
