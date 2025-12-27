@@ -1,3 +1,4 @@
+import type { Address } from "./Address";
 import type { SpotType } from "./SpotType";
 
 export interface Prayspot {
@@ -6,7 +7,7 @@ export interface Prayspot {
   description: string;
   latitude: number;
   longitude: number;
-  address: string;
+  address: Address;
   type: SpotType;
   isVerified: boolean;
 }

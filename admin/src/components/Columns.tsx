@@ -38,8 +38,20 @@ export const createColumns = (
     accessorKey: "address",
     header: "Adresse",
     cell: ({ row }) => {
-      const address = row.getValue("address") as string;
-      return <span className="text-gray-600">{address}</span>;
+      const address = row.original.address;
+      if (!address) {
+        return <span> Keine Adresse verfügbar</span>;
+      }
+      return (
+        <div className="flex flex-col">
+          <span className="text-gray-900">
+            {address.street} {address.houseNumber}
+          </span>
+          <span className="text-gray-500 text-sm">
+            {`${address.postalCode}, ${address.city}`}
+          </span>
+        </div>
+      );
     },
   },
   {
