@@ -12,7 +12,7 @@ import { usePrayspots } from "@/hooks/useSpots";
 import { createColumns } from "@/components/Columns";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import type { Prayspot } from "@/types/Prayspot";
-import { updatePrayspotStatus } from "@/api/prayspotApi";
+import { deletePrayspotById, updatePrayspotStatus } from "@/api/prayspotApi";
 
 const TITLE_OF_PAGE = "Gebetsorte";
 
@@ -35,7 +35,14 @@ function AllSpotsPage() {
     }
   };
 
-  const columns = createColumns(handleToggleStatus);
+  const handleDeleteSpot = async (id: number) => {
+    setIsUpdating(true);
+    await deletePrayspotById(id);
+    mutate();
+    setIsUpdating(false);
+  };
+
+  const columns = createColumns(handleToggleStatus, handleDeleteSpot);
   console.log(data);
 
   return (

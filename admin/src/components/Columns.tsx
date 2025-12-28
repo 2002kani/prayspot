@@ -5,7 +5,8 @@ import { Check, MapPin, CircleDashed } from "lucide-react";
 import ColumnsDropdown from "./ColumnsDropdown";
 
 export const createColumns = (
-  onToggleStatus: (prayspot: Prayspot) => void
+  onToggleStatus: (prayspot: Prayspot) => void,
+  onDeleteSpot: (id: number) => void
 ): ColumnDef<Prayspot>[] => [
   {
     accessorKey: "type",
@@ -79,11 +80,11 @@ export const createColumns = (
       const prayspot = row.original;
       return (
         <ColumnsDropdown
-          name={prayspot.name}
           latitude={prayspot.latitude}
           longitude={prayspot.longitude}
           isVerified={prayspot.isVerified}
           onToggleStatus={() => onToggleStatus(prayspot)}
+          onSpotDelete={() => onDeleteSpot(prayspot.id)}
         />
       );
     },

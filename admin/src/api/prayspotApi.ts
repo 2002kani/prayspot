@@ -26,8 +26,18 @@ export const updatePrayspotStatus = async (
   });
 
   if (!response.ok) {
-    throw new Error(`Failed to update todo: ${response.statusText}`);
+    throw new Error(`Failed to update Prayspot: ${response.statusText}`);
   }
 
   return response.json();
+};
+
+export const deletePrayspotById = async (id: number) => {
+  const response = await fetch(`${ENDPOINT}/spot/${id}`, {
+    method: "DELETE",
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to delete Prayspot: ${response.statusText}`);
+  }
 };

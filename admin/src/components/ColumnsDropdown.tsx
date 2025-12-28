@@ -1,4 +1,4 @@
-import { MoreHorizontal, Copy, Navigation, Check, X } from "lucide-react";
+import { MoreHorizontal, Navigation, Check, X, Trash } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   DropdownMenu,
@@ -10,19 +10,19 @@ import {
 } from "./ui/dropdown-menu";
 
 interface IColumnsDropdownProps {
-  name: string;
   latitude: number;
   longitude: number;
   isVerified: boolean;
   onToggleStatus: () => void;
+  onSpotDelete: () => void;
 }
 
 function ColumnsDropdown({
-  name,
   latitude,
   longitude,
   isVerified,
   onToggleStatus,
+  onSpotDelete,
 }: IColumnsDropdownProps) {
   return (
     <div className="flex justify-end">
@@ -45,13 +45,6 @@ function ColumnsDropdown({
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem
-            onClick={() => navigator.clipboard.writeText(name)}
-            className="flex items-center gap-2 cursor-pointer"
-          >
-            <Copy className="h-4 w-4 text-gray-500" />
-            <span>Name kopieren</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem
             onClick={onToggleStatus}
             className="flex items-center gap-2 cursor-pointer"
           >
@@ -66,6 +59,13 @@ function ColumnsDropdown({
                 <span>Verifizieren</span>
               </>
             )}
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={onSpotDelete}
+            className="flex items-center gap-2 cursor-pointer"
+          >
+            <Trash className="h-4 w-4 text-red-500" />
+            <span>Gebetsort entfernen</span>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem className="flex items-center gap-2 cursor-default focus:bg-transparent">
