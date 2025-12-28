@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface IPrayspotService {
     public List<PrayspotResponse> getAllPrayspots();
-    public PrayspotResponse createPrayspot(@RequestBody PrayspotRequest request);
-    public PrayspotResponse updatePrayspotStatus(@PathVariable Long id, boolean isVerified);
+    public PrayspotResponse createPrayspot(PrayspotRequest request);
+    public PrayspotResponse updatePrayspotStatus(Long id, boolean isVerified);
+    public void deletePrayspotById(Long id);
 }

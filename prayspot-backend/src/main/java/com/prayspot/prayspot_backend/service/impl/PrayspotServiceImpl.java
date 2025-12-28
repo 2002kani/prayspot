@@ -45,4 +45,12 @@ public class PrayspotServiceImpl implements IPrayspotService {
 
         return prayspotMapper.mapToPrayspotResponse(spot);
     }
+
+    @Override
+    public void deletePrayspotById(Long id) {
+        if(!prayspotRepository.existsById(id)){
+            throw new SpotNotFoundException("Prayspot with id: " + id + " not found");
+        }
+        prayspotRepository.deleteById(id);
+    }
 }
