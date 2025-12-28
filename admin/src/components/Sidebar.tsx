@@ -12,12 +12,18 @@ import {
   SidebarMenuItem,
   SidebarSeparator,
 } from "./ui/sidebar";
-import { items } from "@/constants/SidebarItems";
+import { getSidebarItems } from "@/constants/SidebarItems";
 import { MapPin } from "lucide-react";
 
-function AppSidebar() {
+interface IAppSidebarProps {
+  onCreateSpot: () => void;
+}
+
+function AppSidebar({ onCreateSpot }: IAppSidebarProps) {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const items = getSidebarItems({ onCreateSpot });
 
   return (
     <Sidebar
@@ -59,13 +65,19 @@ function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu className="space-y-1">
               {items.map((item) => {
-                const active = location.pathname === item.url;
+                const active = item.url && location.pathname === item.url;
 
                 return (
                   <SidebarMenuItem key={item.title} className="cursor-pointer">
                     <SidebarMenuButton asChild>
                       <div
-                        onClick={() => item.url && navigate(item.url)}
+                        onClick={() => {
+                          if (item.onClick) {
+                            item.onClick();
+                          } else if (item.url) {
+                            navigate(item.url);
+                          }
+                        }}
                         className={`flex items-center gap-3 px-3 py-5 rounded-lg group transition-colors
                     ${
                       active

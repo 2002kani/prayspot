@@ -1,6 +1,6 @@
 import { LayoutDashboard, MapPin, Plus, Settings } from "lucide-react";
 
-export const items = [
+export const getSidebarItems = (actions: { onCreateSpot: () => void }) => [
   {
     title: "Dashboard",
     icon: LayoutDashboard,
@@ -14,6 +14,7 @@ export const items = [
   {
     title: "Neu erstellen",
     icon: Plus,
+    onClick: actions.onCreateSpot,
   },
   {
     title: "Einstellungen",

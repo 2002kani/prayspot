@@ -43,7 +43,6 @@ function AllSpotsPage() {
   };
 
   const columns = createColumns(handleToggleStatus, handleDeleteSpot);
-  console.log(data);
 
   return (
     <>
