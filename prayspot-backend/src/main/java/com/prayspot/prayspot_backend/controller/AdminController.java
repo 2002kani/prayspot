@@ -1,5 +1,6 @@
 package com.prayspot.prayspot_backend.controller;
 
+import com.prayspot.prayspot_backend.dto.PrayspotMinResponse;
 import com.prayspot.prayspot_backend.dto.PrayspotRequest;
 import com.prayspot.prayspot_backend.dto.PrayspotResponse;
 import com.prayspot.prayspot_backend.entitiy.Prayspot;
@@ -41,5 +42,11 @@ public class AdminController {
     public ResponseEntity<PrayspotResponse> updatePrayspotStatus(@PathVariable Long id, @RequestBody PrayspotRequest request) {
         PrayspotResponse updatedSpot = prayspotService.updatePrayspotStatus(id, request.getIsVerified());
         return ResponseEntity.ok(updatedSpot);
+    }
+
+    @GetMapping("/dashboard")
+    public ResponseEntity<List<PrayspotMinResponse>> getAllDashboardPrayspots() {
+        List<PrayspotMinResponse> prayspots = prayspotService.getAllDashboardPrayspots();
+        return ResponseEntity.ok(prayspots);
     }
 }

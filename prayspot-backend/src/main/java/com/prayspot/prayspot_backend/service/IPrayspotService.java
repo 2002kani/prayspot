@@ -1,5 +1,6 @@
 package com.prayspot.prayspot_backend.service;
 
+import com.prayspot.prayspot_backend.dto.PrayspotMinResponse;
 import com.prayspot.prayspot_backend.dto.PrayspotRequest;
 import com.prayspot.prayspot_backend.dto.PrayspotResponse;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,4 +13,5 @@ public interface IPrayspotService {
     public PrayspotResponse createPrayspot(PrayspotRequest request);
     public PrayspotResponse updatePrayspotStatus(Long id, boolean isVerified);
     public void deletePrayspotById(Long id);
+    public List<PrayspotMinResponse> getAllDashboardPrayspots();
 }

@@ -1,9 +1,11 @@
 package com.prayspot.prayspot_backend.service.impl;
 
+import com.prayspot.prayspot_backend.dto.PrayspotMinResponse;
 import com.prayspot.prayspot_backend.dto.PrayspotRequest;
 import com.prayspot.prayspot_backend.dto.PrayspotResponse;
 import com.prayspot.prayspot_backend.entitiy.Prayspot;
 import com.prayspot.prayspot_backend.exception.SpotNotFoundException;
+import com.prayspot.prayspot_backend.mapper.AddressMapper;
 import com.prayspot.prayspot_backend.mapper.PrayspotMapper;
 import com.prayspot.prayspot_backend.repository.PrayspotRepository;
 import com.prayspot.prayspot_backend.service.IPrayspotService;
@@ -21,6 +23,7 @@ public class PrayspotServiceImpl implements IPrayspotService {
 
     private final PrayspotRepository prayspotRepository;
     private final PrayspotMapper prayspotMapper;
+    private final AddressMapper addressMapper;
 
     @Override
     public List<PrayspotResponse> getAllPrayspots() {
@@ -52,5 +55,17 @@ public class PrayspotServiceImpl implements IPrayspotService {
             throw new SpotNotFoundException("Prayspot with id: " + id + " not found");
         }
         prayspotRepository.deleteById(id);
+    }
+
+    @Override
+    public List<PrayspotMinResponse> getAllDashboardPrayspots() {
+        List<Prayspot> spots = prayspotRepository.findByIsDeletedFalseOrderByCreatedAtDesc();
+        return spots.stream().map(p -> PrayspotMinResponse.builder()
+                .id(p.getId())
+                .name(p.getName())
+                .city(p.getAddress() != null ? p.getAddress().getCity() : null)
+                .isVerified(p.getIsVerified())
+                .createdAt(p.getCreatedAt())
+                .build()).toList();
     }
 }
