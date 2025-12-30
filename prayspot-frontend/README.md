@@ -1,50 +1,61 @@
-# Welcome to your Expo app 👋
+# Official Repository of Prayspot
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+All the best practises, naming conventions, information and much more. This is the readme file for general information and purposes, you can find expicit readme files for backend & frontend stuff in their directories.
 
-## Get started
+## How to start?
 
-1. Install dependencies
+**Prerequisites**
 
-   ```bash
-   npm install
-   ```
+- node, git, java, expo go
 
-2. Start the app
+**What to do**
 
-   ```bash
-   npx expo start
-   ```
+1. Clone this repo
+2. Open file (terminal method, you can do it manually too by opening prayspot-frontend in vscode)
 
-In the output, you'll find options to open the app in a
+- cd prayspot
+- cd prayspot-frontend
+- code .
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Branch naming convention
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+initials/feature_name
 
-## Get a fresh project
+Example: kk/adding_expomaps
 
-When you're ready, run:
+## Feature Workflow
 
-```bash
-npm run reset-project
-```
+If you’re working on a feature, fixing a bug, or making any changes in the app, **never push your code directly to main**. We use branches to manage our workflow. Here’s an example of how it should be done:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+1. Start always from main branch
+2. Git pull
+3. git checkout -b BRANCH_NAME
+4. npm i
 
-## Learn more
+Now you can make some changes in the code without directly affecting the main branch. Lets say you are finished with your changes:
 
-To learn more about developing your project with Expo, look at the following resources:
+5. git add .
+6. git commit -m "COMMIT_DESCRIPTION"
+7. git push origin BRANCH_NAME
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Now you can checkout back to main branch if you want.
 
-## Join the community
+## Pull request
 
-Join our community of developers creating universal apps.
+After pushing your changes, open the GitHub repository. You’ll find your created pull request there. Fill in the details, submit it, and wait for the CTO to review and approve your PR.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Naming convention: type(area): example message
+
+**type examples:**
+
+feat → new feature
+
+fix → Bugfix
+
+chore → regular updates, no direct code impact
+
+refactor → change of code structuring
+
+docs → documentations
+
+test → test implementation
