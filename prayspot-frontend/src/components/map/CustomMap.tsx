@@ -19,7 +19,7 @@ interface CustomMapProps {
 const CustomMap: React.FC<CustomMapProps> = ({ userLocation }) => {
   const mapRef = useRef<MapView>(null);
   const colorScheme = useColorScheme();
-  const colors = Colors.light; // ggf. hier bald darkmode einführen
+  const colors = colorScheme === "dark" ? Colors.dark : Colors.light;
 
   const defaultRegion = {
     latitude: 52.52,
@@ -60,7 +60,7 @@ const CustomMap: React.FC<CustomMapProps> = ({ userLocation }) => {
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         },
-        700
+        600
       );
     }
   };

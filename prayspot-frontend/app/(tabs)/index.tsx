@@ -8,18 +8,15 @@ import {
   useColorScheme,
   View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   const { location, error, loading } = useLocation();
   const colorScheme = useColorScheme();
   const colors = colorScheme === "dark" ? Colors.dark : Colors.light;
 
-  return (
-    <SafeAreaView
-      style={[styles.container, { backgroundColor: colors.background }]}
-    >
-      {loading ? (
+  if (loading) {
+    return (
+      <View style={[styles.container, { backgroundColor: colors.background }]}>
         <View style={styles.centerContent}>
           <View
             style={[
@@ -39,7 +36,13 @@ export default function Index() {
             </Text>
           </View>
         </View>
-      ) : error ? (
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View style={[styles.container, { backgroundColor: colors.background }]}>
         <View style={styles.centerContent}>
           <View
             style={[
@@ -69,19 +72,23 @@ export default function Index() {
             </Text>
           </View>
         </View>
-      ) : (
-        <CustomMap
-          userLocation={
-            location
-              ? {
-                  latitude: location.coords.latitude,
-                  longitude: location.coords.longitude,
-                }
-              : null
-          }
-        />
-      )}
-    </SafeAreaView>
+      </View>
+    );
+  }
+
+  return (
+    <View style={styles.container}>
+      <CustomMap
+        userLocation={
+          location
+            ? {
+                latitude: location.coords.latitude,
+                longitude: location.coords.longitude,
+              }
+            : null
+        }
+      />
+    </View>
   );
 }
 

@@ -1,7 +1,7 @@
 import { Colors } from "@/src/constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-import { useColorScheme } from "react-native";
+import { Text, useColorScheme, View } from "react-native";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -16,7 +16,7 @@ export default function TabLayout() {
           backgroundColor: colors.surface,
           borderTopColor: colors.border,
           borderTopWidth: 1,
-          height: 60,
+          height: 80,
           paddingBottom: 8,
           paddingTop: 8,
         },
@@ -33,6 +33,7 @@ export default function TabLayout() {
           fontSize: 20,
           fontWeight: "700",
           color: colors.text,
+          marginTop: -10,
         },
         headerShadowVisible: false,
       }}
@@ -41,7 +42,33 @@ export default function TabLayout() {
         name="index"
         options={{
           title: "Karte",
-          headerTitle: "Prayspot",
+          headerTitle: () => (
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                marginTop: -10,
+              }}
+            >
+              <View
+                style={{
+                  backgroundColor: Colors.light.primary,
+                  borderRadius: 8,
+                  padding: 5,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginRight: 10,
+                }}
+              >
+                <Ionicons name="location-outline" size={20} color="white" />
+              </View>
+              <Text
+                style={{ fontSize: 20, fontWeight: "700", color: colors.text }}
+              >
+                Prayspot
+              </Text>
+            </View>
+          ),
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="map" size={size} color={color} />
           ),
@@ -51,7 +78,33 @@ export default function TabLayout() {
         name="menu"
         options={{
           title: "Menü",
-          headerTitle: "Prayspot",
+          headerTitle: () => (
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                marginTop: -10,
+              }}
+            >
+              <View
+                style={{
+                  backgroundColor: Colors.light.primary,
+                  borderRadius: 8,
+                  padding: 5,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginRight: 10,
+                }}
+              >
+                <Ionicons name="location-outline" size={20} color="white" />
+              </View>
+              <Text
+                style={{ fontSize: 20, fontWeight: "700", color: colors.text }}
+              >
+                Prayspot
+              </Text>
+            </View>
+          ),
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="menu" size={size} color={color} />
           ),
