@@ -6,7 +6,7 @@ All the best practises, naming conventions, information and much more. This is t
 
 **Prerequisites**
 
-- node, git, java, expo go
+- node, git, java, expo go, postgresql, intellij idea
 
 **What to do**
 
@@ -59,3 +59,29 @@ refactor → change of code structuring
 docs → documentations
 
 test → test implementation
+
+## Start developing
+
+To start developing you must start both the frontend and backend in order to
+
+(Inside VScode)
+
+1. cd prayspot-frontend
+2. npm i
+
+3. Create .env file (in root folder)
+4. Paste the following inside .env
+   EXPO_PUBLIC_API_URL=http://[YOUR_IP_ADDRESS]/api
+   EXPO_PUBLIC_API_URL_WEB=http://localhost:8080/api
+
+5. npx expo start
+
+(Inside intelliJ)
+
+1. cd prayspot-backend
+2. ./mvnw clean
+3. ./mvnw spring-boot:run
+
+Note:
+Your IP address can change from the area you start developing in. Make sure to update your .env if you are in a different place.
+Im working on a better solution but for now thats it.

@@ -1,3 +1,5 @@
+import { Prayspot } from "@/src/types/prayspot";
+import { SpotType } from "@/src/types/SpotType";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useRef } from "react";
 import {
@@ -14,9 +16,10 @@ interface CustomMapProps {
     latitude: number;
     longitude: number;
   } | null;
+  prayspots?: Prayspot[];
 }
 
-const CustomMap: React.FC<CustomMapProps> = ({ userLocation }) => {
+const CustomMap: React.FC<CustomMapProps> = ({ userLocation, prayspots }) => {
   const mapRef = useRef<MapView>(null);
   const colorScheme = useColorScheme();
   const colors = colorScheme === "dark" ? Colors.dark : Colors.light;
@@ -65,6 +68,17 @@ const CustomMap: React.FC<CustomMapProps> = ({ userLocation }) => {
     }
   };
 
+  const getMarkerColor = (prayspot: Prayspot) => {
+    if (prayspot.type === SpotType.MOSQUE) {
+      return colors.primary; // Grün für Moscheen
+    }
+    return colors.accent; // Helleres Grün für Gebetsräume
+  };
+
+  const getMarkerIcon = (prayspot: Prayspot) => {
+    return prayspot.type === SpotType.MOSQUE ? "business" : "location";
+  };
+
   return (
     <View style={styles.container}>
       <MapView
@@ -76,6 +90,7 @@ const CustomMap: React.FC<CustomMapProps> = ({ userLocation }) => {
         showsMyLocationButton={false}
         customMapStyle={colorScheme === "dark" ? darkMapStyle : undefined}
       >
+        {/* User location Punkt */}
         {userLocation && (
           <Marker coordinate={userLocation} title="Dein Standort">
             <View
@@ -88,6 +103,34 @@ const CustomMap: React.FC<CustomMapProps> = ({ userLocation }) => {
             </View>
           </Marker>
         )}
+
+        {/* Die einzelnen Prayspots*/}
+        {prayspots?.map((spot) => (
+          <Marker
+            key={spot.id}
+            title={spot.name}
+            description={spot.description}
+            coordinate={{ latitude: spot.latitude, longitude: spot.longitude }}
+          >
+            <View
+              style={[
+                styles.prayspotMarker,
+                { backgroundColor: getMarkerColor(spot) },
+              ]}
+            >
+              <Ionicons name={getMarkerIcon(spot)} size={20} color="white" />
+              {spot.isVerified && (
+                <View style={styles.verifiedBadge}>
+                  <Ionicons
+                    name="checkmark-circle"
+                    size={14}
+                    color={colors.primary}
+                  />
+                </View>
+              )}
+            </View>
+          </Marker>
+        ))}
       </MapView>
 
       {/* Location Button */}
@@ -167,6 +210,31 @@ const styles = StyleSheet.create({
     height: 8,
     borderRadius: 4,
     backgroundColor: "white",
+  },
+  prayspotMarker: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 3,
+    borderColor: "white",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  verifiedBadge: {
+    position: "absolute",
+    top: -4,
+    right: -4,
+    backgroundColor: "white",
+    borderRadius: 10,
+    width: 18,
+    height: 18,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
