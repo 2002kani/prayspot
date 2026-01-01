@@ -1,6 +1,7 @@
 import CustomMap from "@/src/components/map/CustomMap";
 import { Colors } from "@/src/constants/Colors";
 import { useLocation } from "@/src/hooks/useLocation";
+import { usePrayspots } from "@/src/hooks/usePrayspots";
 import {
   ActivityIndicator,
   StyleSheet,
@@ -11,10 +12,13 @@ import {
 
 export default function Index() {
   const { location, error, loading } = useLocation();
+  const { spots, isLoading, isError } = usePrayspots();
   const colorScheme = useColorScheme();
   const colors = colorScheme === "dark" ? Colors.dark : Colors.light;
 
-  if (loading) {
+  const spotLoading = loading || isLoading;
+
+  if (spotLoading) {
     return (
       <View style={[styles.container, { backgroundColor: colors.background }]}>
         <View style={styles.centerContent}>
@@ -87,7 +91,16 @@ export default function Index() {
               }
             : null
         }
+        prayspots={spots}
       />
+
+      {isError && (
+        <View style={[styles.errorBanner, { backgroundColor: colors.error }]}>
+          <Text style={styles.errorBannerText}>
+            Gebetsorte konnten nicht geladen werden
+          </Text>
+        </View>
+      )}
     </View>
   );
 }
@@ -160,5 +173,18 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: "center",
     lineHeight: 20,
+  },
+  errorBanner: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    padding: 12,
+    alignItems: "center",
+  },
+  errorBannerText: {
+    color: "white",
+    fontSize: 14,
+    fontWeight: "600",
   },
 });
