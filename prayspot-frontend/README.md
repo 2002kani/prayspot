@@ -71,7 +71,7 @@ To start developing you must start both the frontend and backend in order to
 
 3. Create .env file (in root folder)
 4. Paste the following inside .env
-   EXPO_PUBLIC_API_URL=http://[YOUR_IP_ADDRESS]/api
+   EXPO_PUBLIC_API_URL=http://[YOUR_IP_ADDRESS]:8080/api
    EXPO_PUBLIC_API_URL_WEB=http://localhost:8080/api
 
 5. npx expo start
