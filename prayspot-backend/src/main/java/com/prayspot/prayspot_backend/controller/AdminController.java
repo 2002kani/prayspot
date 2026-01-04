@@ -49,4 +49,10 @@ public class AdminController {
         List<PrayspotMinResponse> prayspots = prayspotService.getAllDashboardPrayspots();
         return ResponseEntity.ok(prayspots);
     }
+
+    @GetMapping("/spot/search")
+    public ResponseEntity<List<PrayspotResponse>> getAllPrayspotsByName(@RequestParam String name) {
+        List<PrayspotResponse> spots = prayspotService.searchByName(name);
+        return ResponseEntity.ok(spots);
+    }
 }

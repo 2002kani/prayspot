@@ -48,8 +48,10 @@ function AllSpotsPage() {
     <>
       <Page>
         <PageHeader>
-          <PageTitle>{TITLE_OF_PAGE}</PageTitle>
-          <PageSemiTitle>{data?.length} Orte insgesamt</PageSemiTitle>
+          <div>
+            <PageTitle>{TITLE_OF_PAGE}</PageTitle>
+            <PageSemiTitle>{data?.length} Orte insgesamt</PageSemiTitle>
+          </div>
         </PageHeader>
 
         <PageList>

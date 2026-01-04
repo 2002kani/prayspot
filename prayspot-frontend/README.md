@@ -6,7 +6,7 @@ All the best practises, naming conventions, information and much more. This is t
 
 **Prerequisites**
 
-- node, git, java, expo go, postgresql, intellij idea
+- node, git, java, expo go, postgresql, intellij idea, ngrok
 
 **What to do**
 
@@ -71,10 +71,13 @@ To start developing you must start both the frontend and backend in order to
 
 3. Create .env file (in root folder)
 4. Paste the following inside .env
-   EXPO_PUBLIC_API_URL=http://[YOUR_IP_ADDRESS]:8080/api
+   EXPO_PUBLIC_API_URL=http://[NGROK_ADDRESS]:8080/api **(IF YOU ARE OUTSIDE)**
+   EXPO_PUBLIC_API_URL=http://[YOUR_IP_ADDRESS]:8080/api **(IF YOU ARE AT HOME)**
    EXPO_PUBLIC_API_URL_WEB=http://localhost:8080/api
 
-5. npx expo start
+5. If you are using ngrok, do the following in the terminal: ngrok http 8080
+
+6. npx expo start
 
 (Inside intelliJ)
 

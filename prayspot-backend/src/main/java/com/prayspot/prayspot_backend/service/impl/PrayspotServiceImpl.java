@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.Collections;
 import java.util.List;
 
 @AllArgsConstructor
@@ -67,5 +68,20 @@ public class PrayspotServiceImpl implements IPrayspotService {
                 .isVerified(p.getIsVerified())
                 .createdAt(p.getCreatedAt())
                 .build()).toList();
+    }
+
+    @Override
+    public List<PrayspotResponse> searchByName(String name) {
+        if(name == null || name.isEmpty()){
+            return Collections.emptyList();
+        }
+
+        String cleanName = name.trim();
+        if(cleanName.length() < 2){
+            return Collections.emptyList();
+        }
+
+        List<Prayspot> spots = prayspotRepository.findByNameContainingIgnoreCase(name);
+        return  prayspotMapper.mapToPrayspotResponseList(spots);
     }
 }

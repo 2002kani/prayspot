@@ -13,11 +13,26 @@ const PageSemiTitle: React.FC<PropsWithChildren> = ({ children }) => {
 };
 
 const PageHeader: React.FC<PropsWithChildren> = ({ children }) => {
-  return <div className="pt-6 pb-3 space-y-1 md:px-4 lg:px-10">{children}</div>;
+  return (
+    <div className="pt-6 pb-3 space-y-1 md:px-4 lg:px-10">
+      <div className="flex items-start justify-between gap-4">{children}</div>
+    </div>
+  );
 };
 
 const PageList: React.FC<PropsWithChildren> = ({ children }) => {
   return <div className="pt-8 pb-20 md:px-4 lg:px-10">{children}</div>;
 };
 
-export { Page, PageHeader, PageList, PageTitle, PageSemiTitle };
+const PageHeaderRight: React.FC<PropsWithChildren> = ({ children }) => {
+  return <div className="flex items-center gap-2">{children}</div>;
+};
+
+export {
+  Page,
+  PageHeader,
+  PageList,
+  PageTitle,
+  PageSemiTitle,
+  PageHeaderRight,
+};

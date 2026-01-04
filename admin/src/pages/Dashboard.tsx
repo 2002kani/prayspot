@@ -27,10 +27,12 @@ function Dashboard() {
     <>
       <Page>
         <PageHeader>
-          <PageTitle>{TITLE_OF_PAGE}</PageTitle>
-          <PageSemiTitle>
-            Willkommen zurück! Hier ist dein Überblick.
-          </PageSemiTitle>
+          <div>
+            <PageTitle>{TITLE_OF_PAGE}</PageTitle>
+            <PageSemiTitle>
+              Willkommen zurück! Hier ist dein Überblick.
+            </PageSemiTitle>
+          </div>
         </PageHeader>
 
         <PageList>

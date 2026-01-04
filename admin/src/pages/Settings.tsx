@@ -14,8 +14,10 @@ function Settings() {
     <>
       <Page>
         <PageHeader>
-          <PageTitle>{TITLE_OF_PAGE}</PageTitle>
-          <PageSemiTitle>Verwalte deine Admin-Einstellungen</PageSemiTitle>
+          <div>
+            <PageTitle>{TITLE_OF_PAGE}</PageTitle>
+            <PageSemiTitle>Verwalte deine Admin-Einstellungen</PageSemiTitle>
+          </div>
         </PageHeader>
 
         <PageList>

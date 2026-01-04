@@ -14,4 +14,5 @@ public interface IPrayspotService {
     public PrayspotResponse updatePrayspotStatus(Long id, boolean isVerified);
     public void deletePrayspotById(Long id);
     public List<PrayspotMinResponse> getAllDashboardPrayspots();
+    public List<PrayspotResponse> searchByName(String name);
 }

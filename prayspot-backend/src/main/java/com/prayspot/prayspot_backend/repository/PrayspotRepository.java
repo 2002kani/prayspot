@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface PrayspotRepository extends JpaRepository<Prayspot, Long> {
     List<Prayspot> findByIsDeletedFalseOrderByCreatedAtDesc();
+    List<Prayspot> findByNameContainingIgnoreCase(String name);
+
 }
