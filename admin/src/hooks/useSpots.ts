@@ -10,7 +10,7 @@ export const usePrayspots = () => {
   );
 
   return {
-    data: data,
+    data,
     isLoading,
     isError: error,
     mutate,

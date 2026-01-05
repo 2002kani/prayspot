@@ -25,7 +25,7 @@ const PageList: React.FC<PropsWithChildren> = ({ children }) => {
 };
 
 const PageHeaderRight: React.FC<PropsWithChildren> = ({ children }) => {
-  return <div className="flex items-center gap-2">{children}</div>;
+  return <div className="flex items-center gap-2 self-end">{children}</div>;
 };
 
 export {
