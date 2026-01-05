@@ -73,12 +73,8 @@ public class PrayspotServiceImpl implements IPrayspotService {
     @Override
     public List<PrayspotResponse> searchByName(String name) {
         if(name == null || name.isEmpty()){
-            return Collections.emptyList();
-        }
-
-        String cleanName = name.trim();
-        if(cleanName.length() < 2){
-            return Collections.emptyList();
+            List<Prayspot> spots = prayspotRepository.findByIsDeletedFalseOrderByCreatedAtDesc();
+            return prayspotMapper.mapToPrayspotResponseList(spots);
         }
 
         List<Prayspot> spots = prayspotRepository.findByNameContainingIgnoreCase(name);
