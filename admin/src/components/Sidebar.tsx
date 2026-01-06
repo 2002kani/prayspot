@@ -14,12 +14,14 @@ import {
 } from "./ui/sidebar";
 import { getSidebarItems } from "@/constants/SidebarItems";
 import { MapPin } from "lucide-react";
+import { usePrayspots } from "@/hooks/useSpots";
 
 interface IAppSidebarProps {
   onCreateSpot: () => void;
 }
 
 function AppSidebar({ onCreateSpot }: IAppSidebarProps) {
+  const { data } = usePrayspots();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -99,6 +101,11 @@ function AppSidebar({ onCreateSpot }: IAppSidebarProps) {
                         >
                           {item.title}
                         </span>
+                        {item.title === "Gebetsorte" && (
+                          <span className="ml-auto text-xs text-muted-foreground">
+                            {data?.length}
+                          </span>
+                        )}
                       </div>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
