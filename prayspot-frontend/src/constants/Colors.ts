@@ -31,6 +31,10 @@ export const Colors = {
     // Shadows
     shadow: "rgba(31, 46, 39, 0.08)",
     shadowDark: "rgba(31, 46, 39, 0.15)",
+
+    // Spot Colors
+    markerMosque: "#2F5D50",
+    markerPrayerRoom: "#B08968",
   },
   dark: {
     // Backgrounds
@@ -64,5 +68,9 @@ export const Colors = {
     // Shadows
     shadow: "rgba(0, 0, 0, 0.3)",
     shadowDark: "rgba(0, 0, 0, 0.5)",
+
+    // Spot Colors
+    markerMosque: "#2F5D50",
+    markerPrayerRoom: "#B08968",
   },
 };

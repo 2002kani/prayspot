@@ -1,6 +1,6 @@
 import { Prayspot } from "@/src/types/prayspot";
 import { SpotType } from "@/src/types/SpotType";
-import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome6, Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useRef } from "react";
 import {
   StyleSheet,
@@ -70,13 +70,13 @@ const CustomMap: React.FC<CustomMapProps> = ({ userLocation, prayspots }) => {
 
   const getMarkerColor = (prayspot: Prayspot) => {
     if (prayspot.type === SpotType.MOSQUE) {
-      return colors.primary; // Grün für Moscheen
+      return colors.markerMosque; // Grün für Moscheen
     }
-    return colors.accent; // Helleres Grün für Gebetsräume
+    return colors.markerPrayerRoom; // Helleres Grün für Gebetsräume
   };
 
   const getMarkerIcon = (prayspot: Prayspot) => {
-    return prayspot.type === SpotType.MOSQUE ? "business" : "location";
+    return prayspot.type === SpotType.MOSQUE ? "mosque" : "person-praying";
   };
 
   return (
@@ -118,7 +118,11 @@ const CustomMap: React.FC<CustomMapProps> = ({ userLocation, prayspots }) => {
                 { backgroundColor: getMarkerColor(spot) },
               ]}
             >
-              <Ionicons name={getMarkerIcon(spot)} size={20} color="white" />
+              <FontAwesome6
+                name={getMarkerIcon(spot)}
+                size={13}
+                color="white"
+              />
               {spot.isVerified && (
                 <View style={styles.verifiedBadge}>
                   <Ionicons
@@ -212,8 +216,8 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   prayspotMarker: {
-    width: 40,
-    height: 40,
+    width: 35,
+    height: 35,
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
@@ -231,8 +235,8 @@ const styles = StyleSheet.create({
     right: -4,
     backgroundColor: "white",
     borderRadius: 10,
-    width: 18,
-    height: 18,
+    width: 15,
+    height: 15,
     justifyContent: "center",
     alignItems: "center",
   },
