@@ -30,7 +30,7 @@ function AppSidebar({ onCreateSpot }: IAppSidebarProps) {
   return (
     <Sidebar
       collapsible="none"
-      className="bg-white border-r border-gray-200 h-screen w-[18%]"
+      className="fixed bg-white border-r border-gray-200 h-screen w-[18%]"
     >
       <SidebarHeader className="px-6 py-5">
         <div className="flex items-center gap-3">

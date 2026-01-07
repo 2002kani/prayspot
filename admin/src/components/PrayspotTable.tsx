@@ -43,7 +43,7 @@ function PrayspotTable<TData, TValue>({
                   return (
                     <TableHead
                       key={header.id}
-                      className="h-12 px-6 text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                      className="h-9 px-4 text-[11px] font-semibold text-gray-700 uppercase tracking-wide"
                     >
                       {header.isPlaceholder
                         ? null
@@ -66,14 +66,14 @@ function PrayspotTable<TData, TValue>({
                   className={`
                     border-b border-gray-100 last:border-0
                     transition-colors duration-150
-                    hover:bg-gray-50/50
+                    hover:bg-gray-50/40
                     ${index % 2 === 0 ? "bg-white" : "bg-gray-50/30"}
                   `}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell
                       key={cell.id}
-                      className="px-6 py-4 text-sm text-gray-900"
+                      className="px-4 py-2.5 text-[13px] text-gray-900"
                     >
                       {flexRender(
                         cell.column.columnDef.cell,

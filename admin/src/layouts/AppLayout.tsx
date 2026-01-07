@@ -18,7 +18,7 @@ function AppLayout() {
       <TooltipProvider delayDuration={400} disableHoverableContent>
         <Sidebar onCreateSpot={onCreateSpot} />
 
-        <main className="flex-1">
+        <main className="ml-[18%] flex-1">
           <Outlet />
         </main>
 
